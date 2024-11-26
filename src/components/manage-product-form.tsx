@@ -18,6 +18,7 @@ import {
 interface Product {
   id: string
   name: string
+  url: string
   description: string
   requireAdmin: boolean
 }
@@ -25,23 +26,25 @@ interface Product {
 interface FormData {
   productId: string
   name: string
+  url: string
   description: string
   requireAdmin: boolean
 }
 
 // TODO: get this from api endpoint
 const productOptions: Product[] = [
-  { id: "electric-boost", name: "Electric Boost", description: "Supercharge your day", requireAdmin: false },
-  { id: "neon-surge", name: "Neon Surge", description: "Illuminate your potential", requireAdmin: true },
-  { id: "volt-vibe", name: "Volt Vibe", description: "Feel the energy", requireAdmin: false },
-  { id: "plasma-pulse", name: "Plasma Pulse", description: "Electrify your senses", requireAdmin: true },
-  { id: "thunder-thrill", name: "Thunder Thrill", description: "Experience the power", requireAdmin: false },
+  { id: "electric-boost", name: "Electric Boost", url:"", description: "Supercharge your day", requireAdmin: false },
+  { id: "neon-surge", name: "Neon Surge", url:"", description: "Illuminate your potential", requireAdmin: true },
+  { id: "volt-vibe", name: "Volt Vibe", url:"", description: "Feel the energy", requireAdmin: false },
+  { id: "plasma-pulse", name: "Plasma Pulse", url:"", description: "Electrify your senses", requireAdmin: true },
+  { id: "thunder-thrill", name: "Thunder Thrill", url:"", description: "Experience the power", requireAdmin: false },
 ]
 
 export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: FormData) => void, onDelete: (id: string) => void }) {
   const [formData, setFormData] = useState<FormData>({
     productId: "",
     name: "",
+    url:"",
     description: "",
     requireAdmin: false,
   })
@@ -52,6 +55,7 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
       setFormData({
         productId: selectedProduct.id,
         name: selectedProduct.name,
+        url:selectedProduct.url,
         description: selectedProduct.description,
         requireAdmin: selectedProduct.requireAdmin,
       })
@@ -116,12 +120,28 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
             htmlFor="name" 
             className="text-sm font-medium tracking-wide text-blue-200"
           >
-            Name
+            Product Name
           </Label>
           <Input
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+            placeholder="Enter product name"
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label 
+            htmlFor="name" 
+            className="text-sm font-medium tracking-wide text-blue-200"
+          >
+            Product URL
+          </Label>
+          <Input
+            id="name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, url: e.target.value })}
             className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
             placeholder="Enter product name"
             required

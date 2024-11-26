@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 interface FormData {
   name: string
+  url: string
   description: string
   price?: number
   requireAdmin: boolean
@@ -18,6 +19,7 @@ interface FormData {
 export function CreateProductForm({ onCreate }: { onCreate: (data: FormData) => void }) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
+    url: "",
     description: "",
     price: undefined,
     requireAdmin: false,
@@ -50,6 +52,22 @@ export function CreateProductForm({ onCreate }: { onCreate: (data: FormData) => 
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+            placeholder="Enter product name"
+            required
+          />
+        </div>
+        <div className="space-y-2">
+          <Label 
+            htmlFor="name" 
+            className="text-sm font-medium tracking-wide text-blue-200"
+          >
+            Product URL
+          </Label>
+          <Input
+            id="name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, url: e.target.value })}
             className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
             placeholder="Enter product name"
             required
