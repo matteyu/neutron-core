@@ -23,84 +23,49 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     // Destructure the incoming data
-    const { email, address, isAdmin, products, password } = body;
+    const { name, url, description, price } = body;
 
     // Validate the required fields
-    if (!email) {
+    if (!name) {
       return NextResponse.json(
-        { error: "Email is a required field." },
+        { error: "Product Name is a required field." },
         { status: 400 }
       );
     }
 
-    if (!address) {
+    if (!url) {
       return NextResponse.json(
-        { error: "Address is a required field." },
+        { error: "Product Url is a required field." },
         { status: 400 }
       );
     }
 
-    if (!password) {
+    if (!description) {
         return NextResponse.json(
-          { error: "Password is a required field." },
+          { error: "Production Description is a required field." },
           { status: 400 }
         );
       }
 
-    // Validate the `products` array if provided
-    if (products && !Array.isArray(products)) {
-      return NextResponse.json(
-        { error: "Products must be an array of product objects." },
-        { status: 400 }
-      );
-    }
-    const foundProducts = await prisma.product.findMany({
-      where: {
-        name: {
-          in: products,
-        },
-      },
-    });
-    if (products.length !== foundProducts.length) {
-        throw new Error('Some products in the provided list do not exist');
-      }
-      
     // Create the user with optional products using Prisma
-    const newUser = await prisma.user.create({
+    const newProduct = await prisma.product.create({
         data: {
-            email,
-            address,
-            isAdmin,
-            products: {
-              connect: foundProducts.map((product) => ({ id: product.id })),
-            },
-          },
-          include: {
-            products: true,
-          },
+            name,
+            url,
+            description,
+            price
+          }
     });
 
     return NextResponse.json(
-      { message: "User created successfully.", user: newUser },
+      { message: "Product created successfully.", product: newProduct },
       { status: 201 }
     );
   } catch (error: any) {
-    console.error("Error adding user:", error);
-
-    // Handle unique constraint errors
-    if (error.code === "P2002") {
-      return NextResponse.json(
-        {
-          error: `A user with the provided ${
-            error.meta.target.includes("email") ? "email" : "address"
-          } already exists.`,
-        },
-        { status: 409 }
-      );
-    }
+    console.error("Error adding product:", error);
 
     return NextResponse.json(
-      { error: "An error occurred while creating the user." },
+      { error: "An error occurred while creating the product." },
       { status: 500 }
     );
   }
