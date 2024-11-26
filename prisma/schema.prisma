@@ -11,6 +11,7 @@ generator client {
 model Product {
   id           Int      @id @default(autoincrement())
   name         String
+  url          String?
   description  String
   price        Float?
   icon         Int?
