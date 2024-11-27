@@ -116,7 +116,7 @@ export function DiscoverWalletProvidersComponent() {
               </svg>
             )}
             <div>
-              <div className="font-semibold text-white">{(selectedWallet && !loggedIn) ? selectedWallet.info.name : "Google"}</div>
+              <div className="font-semibold text-black">{(selectedWallet && !loggedIn) ? selectedWallet.info.name : "Google"}</div>
               <div className="text-sm text-gray-500">{formatAddress(userAccount)}</div>
             </div>
           </div>

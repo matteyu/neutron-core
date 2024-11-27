@@ -55,7 +55,7 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
       setFormData({
         productId: selectedProduct.id,
         name: selectedProduct.name,
-        url:selectedProduct.url,
+        url: selectedProduct.url,
         description: selectedProduct.description,
         requireAdmin: selectedProduct.requireAdmin,
       })
@@ -88,12 +88,12 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-8 p-6 rounded-xl bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-[2px] shadow-[0_8px_16px_rgba(0,0,0,0.2)] border border-white/20">
       <div className="space-y-6">
         <div className="space-y-2">
           <Label 
             htmlFor="product" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Product
           </Label>
@@ -102,13 +102,13 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
             onValueChange={handleProductChange}
           >
             <SelectTrigger 
-              className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+              className="h-12 text-white transition-all duration-200 border rounded-lg shadow-inner bg-white/10 border-white/20 backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
             >
               <SelectValue placeholder="Select a product" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="border bg-white/10 backdrop-blur-md border-white/20">
               {productOptions.map((option) => (
-                <SelectItem key={option.id} value={option.id}>
+                <SelectItem key={option.id} value={option.id} className="text-white hover:bg-white/20">
                   {option.name}
                 </SelectItem>
               ))}
@@ -118,7 +118,7 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
         <div className="space-y-2">
           <Label 
             htmlFor="name" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Product Name
           </Label>
@@ -126,31 +126,31 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+            className="h-12 text-white transition-all duration-200 border rounded-lg shadow-inner bg-white/10 border-white/20 backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
             placeholder="Enter product name"
             required
           />
         </div>
         <div className="space-y-2">
           <Label 
-            htmlFor="name" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            htmlFor="url" 
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Product URL
           </Label>
           <Input
-            id="name"
-            value={formData.name}
+            id="url"
+            value={formData.url}
             onChange={(e) => setFormData({ ...formData, url: e.target.value })}
-            className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
-            placeholder="Enter product name"
+            className="h-12 text-white transition-all duration-200 border rounded-lg shadow-inner bg-white/10 border-white/20 backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
+            placeholder="Enter product URL"
             required
           />
         </div>
         <div className="space-y-2">
           <Label 
             htmlFor="description" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Description
           </Label>
@@ -158,7 +158,7 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
             id="description"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="min-h-[100px] text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+            className="min-h-[100px] text-white bg-white/10 transition-all duration-200 border border-white/20 rounded-lg shadow-inner backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
             placeholder="Enter product description"
             required
           />
@@ -168,11 +168,11 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
             id="requireAdmin"
             checked={formData.requireAdmin}
             onCheckedChange={(checked) => setFormData({ ...formData, requireAdmin: checked as boolean })}
-            className="h-5 w-5 border-2 border-blue-400/30 data-[state=checked]:border-blue-400/80 data-[state=checked]:bg-blue-500 transition-colors duration-200"
+            className="h-5 w-5 border-2 border-white/30 data-[state=checked]:border-white/50 data-[state=checked]:bg-white/20 transition-colors duration-200"
           />
           <Label 
             htmlFor="requireAdmin" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Require Admin
           </Label>
@@ -181,14 +181,14 @@ export function ManageProductForm({ onUpdate, onDelete }: { onUpdate: (data: For
       <div className="flex space-x-4">
         <Button 
           type="submit" 
-          className="flex-1 h-12 font-medium tracking-wide text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 shadow-blue-900/50 hover:shadow-blue-400/50"
+          className="flex-1 h-12 font-medium tracking-wide text-white transition-all duration-200 border rounded-lg shadow-lg bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 backdrop-blur-sm border-white/20 hover:border-white/30"
         >
           Update
         </Button>
         <Button 
           type="button"
           onClick={handleDelete}
-          className="flex-1 h-12 font-medium tracking-wide text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 shadow-red-900/50 hover:shadow-red-400/50"
+          className="flex-1 h-12 font-medium tracking-wide text-white transition-all duration-200 border rounded-lg shadow-lg bg-gradient-to-r from-red-500/20 to-red-600/20 hover:from-red-500/30 hover:to-red-600/30 backdrop-blur-sm border-red-500/20 hover:border-red-500/30"
         >
           Delete
         </Button>

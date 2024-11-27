@@ -52,12 +52,12 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-8 p-6 rounded-xl bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-[2px] shadow-[0_8px_16px_rgba(0,0,0,0.2)] border border-white/20">
       <div className="space-y-6">
         <div className="space-y-2">
           <Label 
             htmlFor="emailOrWallet" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Email or Wallet Address
           </Label>
@@ -65,7 +65,7 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
             id="emailOrWallet"
             value={formData.emailOrWallet}
             onChange={(e) => setFormData({ ...formData, emailOrWallet: e.target.value })}
-            className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+            className="h-12 text-white transition-all duration-200 border rounded-lg shadow-inner bg-white/10 border-white/20 backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
             placeholder="Enter email or wallet address"
             required
           />
@@ -73,7 +73,7 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
         <div className="space-y-2">
           <Label 
             htmlFor="product" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Product
           </Label>
@@ -82,13 +82,13 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
             onValueChange={(value) => setFormData({ ...formData, product: value })}
           >
             <SelectTrigger 
-              className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+              className="h-12 text-white transition-all duration-200 border rounded-lg shadow-inner bg-white/10 border-white/20 backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
             >
               <SelectValue placeholder="Select a product" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="border bg-white/10 backdrop-blur-md border-white/20">
               {productOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem key={option.value} value={option.value} className="text-white hover:bg-white/20">
                   {option.label}
                 </SelectItem>
               ))}
@@ -100,11 +100,11 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
             id="isAdmin"
             checked={formData.isAdmin}
             onCheckedChange={(checked) => setFormData({ ...formData, isAdmin: checked as boolean })}
-            className="h-5 w-5 border-2 border-blue-400/30 data-[state=checked]:border-blue-400/80 data-[state=checked]:bg-blue-500 transition-colors duration-200"
+            className="h-5 w-5 border-2 border-white/30 data-[state=checked]:border-white/50 data-[state=checked]:bg-white/20 transition-colors duration-200"
           />
           <Label 
             htmlFor="isAdmin" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Is Admin
           </Label>
@@ -112,7 +112,7 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
         <div className="space-y-2">
           <Label 
             htmlFor="password" 
-            className="text-sm font-medium tracking-wide text-blue-200"
+            className="text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]"
           >
             Password
           </Label>
@@ -121,7 +121,7 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
             type="password"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="h-12 text-blue-100 transition-all duration-200 border-2 rounded-lg shadow-inner bg-blue-950/50 border-blue-400/30 focus:border-blue-400/80 placeholder:text-blue-400/50 shadow-blue-900/50"
+            className="h-12 text-white transition-all duration-200 border rounded-lg shadow-inner bg-white/10 border-white/20 backdrop-blur-sm focus:bg-white/20 focus:border-white/30 placeholder:text-white/50"
             placeholder="Enter password"
             required
           />
@@ -129,7 +129,7 @@ export function CreateUserForm({ onSubmit }: { onSubmit: (data: FormData) => voi
       </div>
       <Button 
         type="submit" 
-        className="w-full h-12 font-medium tracking-wide text-white transition-all duration-200 rounded-lg shadow-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 shadow-blue-900/50 hover:shadow-blue-400/50"
+        className="w-full h-12 font-medium tracking-wide text-white transition-all duration-200 border rounded-lg shadow-lg bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 backdrop-blur-sm border-white/20 hover:border-white/30"
       >
         Submit
       </Button>

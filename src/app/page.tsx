@@ -4,7 +4,7 @@ import { ElectricProductGrid } from "@/components/electric-product-grid";
 
 export default function Home() {
   return (
-    <div className="bg-black grid grid-rows-[20px_1fr_20px] min-h-screen justify-center sm:font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] min-h-screen justify-center sm:font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col row-start-2 gap-8 sm:items-start">
         <DiscoverWalletProvidersComponent />
         <ElectricProductGrid />

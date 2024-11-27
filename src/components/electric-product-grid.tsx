@@ -10,6 +10,7 @@ import { toast } from "@/hooks/use-toast"
 import { CreateUserForm } from "./create-user-form"
 import { ManageProductForm } from "./manage-product-form"
 import { CreateProductForm } from "./create-product-form"
+import { InvestorUploadForm } from "./investor-upload-form"
 
 interface Product {
   id: number
@@ -70,6 +71,7 @@ export function ElectricProductGrid() {
     "Electric Boost": CreateUserForm,
     "Neon Surge": ManageProductForm,
     "Volt Vibe": CreateProductForm,
+    "Plasma Pulse": InvestorUploadForm,
   }
 
   return (
@@ -107,7 +109,7 @@ export function ElectricProductGrid() {
           onClick={closeModal}
         >
           <div 
-            className="w-full max-w-md p-8 mx-4 border shadow-2xl bg-blue-900/90 backdrop-blur-md rounded-xl border-blue-400/30"
+            className="w-[50vw] p-8 mx-4 border shadow-2xl max-w-7xl bg-blue-900/90 backdrop-blur-md rounded-xl border-blue-400/30"
             onClick={(e) => e.stopPropagation()}
           >
             <Button 
