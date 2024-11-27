@@ -89,7 +89,7 @@ export function ElectricProductGrid() {
               </CardHeader>
               <CardContent className="flex flex-col items-center">
                 <IconComponent className="w-1/2 mb-4 text-blue-300 opacity-50 h-1/2" />
-                <p className="text-center text-electric-body">{product.description}</p>
+                <p className="text-center text-white font-semi-bold text-electric-body">{product.description}</p>
               </CardContent>
               <CardFooter className="flex items-center justify-between">
                 <Button 
